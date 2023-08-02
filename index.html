@@ -2,85 +2,14 @@
 <html>
 
 <head>
-  <title>Simple Pixel Art Drawing Tool</title>
+  <title>Simple Pixel Art</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
-
-    #colorDisplay {
-      width: 200px;
-      height: 100px;
-      margin: 20px auto;
-      border: 2px solid #000;
-    }
-
-    input[type="range"] {
-      width: 80%;
-      margin: 10px;
-    }
-
-    input[type="text"] {
-      width: 80px;
-      margin: 5px;
-    }
-
-    .presetColor {
-      width: 40px;
-      height: 40px;
-      margin: 5px;
-      border: 1px solid #000;
-      cursor: pointer;
-    }
-
-    .colorGrid {
-      display: grid;
-      grid-template-columns: repeat(4, 40px);
-      gap: 5px;
-      margin: 20px auto;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-
-    .panel {
-      flex: 1;
-      min-width: 300px;
-      /* Adjust the minimum width as needed */
-      box-sizing: border-box;
-      border: 0px solid #ccc;
-      padding: 20px;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        flex-direction: column;
-      }
-    }
-  </style>
 </head>
 
 <body>
-  <h1>Simple Pixel Art Drawing Tool</h1>
-
   <div class="container">
     <div class="panel" id="controlPanel">
-      <!-- <input type="color" id="color-picker" value="#000000"> -->
-      <div class="control-buttons">
-        <button id="eraser-button">Eraser</button>
-        <button id="clear-button">Clear Canvas</button>
-        <button id="export-button">Export Canvas</button>
-        <button id="import-button">Import Canvas</button>
-        <button id="export-png-button">Export as PNG</button>
-
-        <label for="uploadInput" id="uploadLabel">Select Image</label>
-        <input type="file" id="uploadInput" accept="image/*">
-      </div>
-
+      <h1>Simple Pixel Art</h1>
       <div class="container">
         <div class="panel" id="controlPanel">
           <div id="colorDisplay"></div>
@@ -144,6 +73,17 @@
         </div>
       </div>
 
+      <div class="control-buttons">
+        <button id="eraser-button">Eraser</button>
+        <button id="clear-button">Clear Canvas</button>
+        <button id="export-button">Export Canvas</button>
+        <button id="import-button">Import Canvas</button>
+        <button id="export-png-button">Export as PNG</button>
+
+        <label for="uploadInput" id="uploadLabel">Select Image</label>
+        <input type="file" id="uploadInput" accept="image/*">
+      </div>
+
       <textarea id="import-export-text" rows="5" cols="30" placeholder="Enter imported JSON text here"></textarea>
     </div>
     <div class="panel" id="contentPanel">
@@ -158,7 +98,7 @@
   <script src="script.js"></script>
 
   <script>
- 
+
   </script>
 </body>
 

@@ -1,11 +1,11 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 20px;
+  margin: 0px;
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 /* Styles for desktop devices */
@@ -66,6 +66,7 @@ h1 {
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 5px;
+  aspect-ratio: 1;
 }
 
 .pixel {
@@ -190,4 +191,56 @@ button#export-png-button:hover {
 
 #uploadInput {
   display: none;
+}
+
+#colorDisplay {
+  width: 200px;
+  height: 100px;
+  margin: 20px auto;
+  border: 2px solid #000;
+}
+
+input[type="range"] {
+  width: 80%;
+  margin: 10px;
+}
+
+input[type="text"] {
+  width: 80px;
+  margin: 5px;
+}
+
+.presetColor {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.colorGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 40px);
+  gap: 5px;
+  margin: 20px auto;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.panel {
+  flex: 1;
+  min-width: 300px;
+  /* Adjust the minimum width as needed */
+  box-sizing: border-box;
+  border: 0px solid #ccc;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
 }
