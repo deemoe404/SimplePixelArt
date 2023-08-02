@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let isEraserMode = false;
   let isPickColor = false;
   let currentColor = "#000000";
-  let colorHistory = [];
+  let colorHistory = ['#000000'];
   let pixelsData = [];
 
   // Create the pixel canvas
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update the color history
   function updateColorHistory(color) {
     colorHistory.unshift(color);
-    colorHistory = colorHistory.slice(0, 5);
+    colorHistory = colorHistory.slice(0, 8);
     displayColorHistory();
   }
 
@@ -234,6 +234,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   createCanvas();
+  displayColorHistory();
 });
 
 document.getElementById("uploadInput").addEventListener("change", function (event) {
