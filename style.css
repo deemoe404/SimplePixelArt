@@ -1,0 +1,193 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Styles for desktop devices */
+@media (min-width: 768px) {
+  .canvas {
+    width: 50vw;
+    height: 50vw;
+  }
+
+  .canvas-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .control-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin: 0 10px;
+    padding: 10px 15px;
+  }
+}
+
+/* Styles for mobile devices */
+@media (max-width: 767px) {
+  .canvas {
+    width: 90vw;
+    height: 90vw;
+  }
+
+  .canvas-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .control-buttons {
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  button {
+    margin: 5px;
+    padding: 8px 12px;
+  }
+}
+
+/* Common styles continued */
+.canvas {
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  gap: 1px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+}
+
+.pixel {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ccc;
+}
+
+.control-buttons button,
+input[type="color"],
+textarea {
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.color-history {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.color-history-item {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: transform 0.3s;
+}
+
+.color-history-item:hover {
+  transform: scale(1.1);
+}
+
+input[type="color"] {
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+textarea {
+  margin-bottom: 20px;
+  width: 80%;
+  padding: 10px;
+  resize: none;
+  border: 1px solid #ccc;
+}
+
+/* Button styles */
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button#eraser-button {
+  background-color: #e74c3c;
+}
+
+button#eraser-button:hover {
+  background-color: #c0392b;
+}
+
+button#clear-button {
+  background-color: #f39c12;
+}
+
+button#clear-button:hover {
+  background-color: #d35400;
+}
+
+button#export-button {
+  background-color: #2ecc71;
+}
+
+button#export-button:hover {
+  background-color: #27ae60;
+}
+
+button#import-button {
+  background-color: #3498db;
+}
+
+button#import-button:hover {
+  background-color: #2980b9;
+}
+
+button#export-png-button {
+  background-color: #9b59b6;
+}
+
+button#export-png-button:hover {
+  background-color: #8e44ad;
+}
+
+/* Upload button styles */
+#uploadLabel {
+  display: inline-block;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+  height: auto;
+  font-size: 16px;
+}
+
+#uploadLabel:hover {
+  background-color: #2980b9;
+}
+
+#uploadInput {
+  display: none;
+}
