@@ -20,10 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
         pixel.addEventListener("mousedown", handleMouseDown);
         pixel.addEventListener("mouseup", handleMouseUp);
         pixel.addEventListener("click", pickColorFromPixel); // Add color picking functionality
-        
-        pixel.addEventListener("touchmove", drawPixel);
-        pixel.addEventListener("touchstart", handleMouseDown);
-        pixel.addEventListener("touchend", handleMouseUp);
+
+        pixel.addEventListener("touchmove", drawPixelTouch);
         canvas.appendChild(pixel);
       }
     }
@@ -40,6 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
         pixel.style.backgroundColor = currentColor;
         pixel.dataset.color = currentColor; // Update the color attribute of the pixel
       }
+    }
+  }
+
+  function drawPixelTouch(event) {
+    const pixel = event.target;
+    if (isEraserMode) {
+      pixel.style.backgroundColor = "transparent";
+      pixel.dataset.color = "transparent";
+    } else {
+      pixel.style.backgroundColor = currentColor;
+      pixel.dataset.color = currentColor; // Update the color attribute of the pixel
     }
   }
 
@@ -155,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const importExportText = document.getElementById("import-export-text");
       undoHistory.push(importExportText.value);
       importExportText.value = canvasHistory.pop();
-  
+
       importCanvas();
     }
   }
