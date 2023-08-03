@@ -2,6 +2,7 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
   margin: 20px;
+  overflow: hidden;
 }
 
 h1 {
@@ -146,11 +147,19 @@ button#clear-button:hover {
   background-color: #d35400;
 }
 
-button#export-button {
+button#undo-button {
   background-color: #2ecc71;
 }
 
-button#export-button:hover {
+button#undo-button:hover {
+  background-color: #27ae60;
+}
+
+button#redo-button {
+  background-color: #2ecc71;
+}
+
+button#redo-button:hover {
   background-color: #27ae60;
 }
 
@@ -159,6 +168,30 @@ button#import-button {
 }
 
 button#import-button:hover {
+  background-color: #2980b9;
+}
+
+button#darkenBtn {
+  background-color: #3498db;
+}
+
+button#darkenBtn:hover {
+  background-color: #2980b9;
+}
+
+button#lightenBtn {
+  background-color: #3498db;
+}
+
+button#lightenBtn:hover {
+  background-color: #2980b9;
+}
+
+button#setColor {
+  background-color: #3498db;
+}
+
+button#setColor:hover {
   background-color: #2980b9;
 }
 
