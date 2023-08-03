@@ -287,50 +287,51 @@ document.addEventListener("DOMContentLoaded", function () {
     tempLink.click();
   }
 
+  document.getElementById("uploadInput").addEventListener("change", function (event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function () {
+      const img = new Image();
+      img.src = reader.result;
+      img.onload = function () {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
+
+        // Resize the image to 32x32
+        const targetWidth = 32;
+        const targetHeight = 32;
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, targetWidth, targetHeight);
+
+        // Get the image data in 32x32 size
+        const imageData = ctx.getImageData(0, 0, targetWidth, targetHeight).data;
+
+        // Convert image data to array of hex colors with transparency
+        const hexColorsWithAlpha = [];
+        for (let i = 0; i < imageData.length; i += 4) {
+          const r = imageData[i];
+          const g = imageData[i + 1];
+          const b = imageData[i + 2];
+          const a = imageData[i + 3] / 255; // Normalize alpha value to 0-1 range
+          const hexColor = "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
+          hexColorsWithAlpha.push(hexColor + Math.round(a * 255).toString(16).padStart(2, "0"));
+        }
+
+        // Display the JSON array in the text area
+        const jsonOutput = document.getElementById("import-export-text");
+        jsonOutput.value = JSON.stringify(hexColorsWithAlpha);
+        importCanvas();
+      };
+    };
+    reader.readAsDataURL(file);
+  });
+
   createCanvas();
   displayColorHistory();
   exportCanvas();
-});
-
-document.getElementById("uploadInput").addEventListener("change", function (event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function () {
-    const img = new Image();
-    img.src = reader.result;
-    img.onload = function () {
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-
-      // Resize the image to 32x32
-      const targetWidth = 32;
-      const targetHeight = 32;
-      canvas.width = targetWidth;
-      canvas.height = targetHeight;
-      ctx.drawImage(img, 0, 0, img.width, img.height, 0, 0, targetWidth, targetHeight);
-
-      // Get the image data in 32x32 size
-      const imageData = ctx.getImageData(0, 0, targetWidth, targetHeight).data;
-
-      // Convert image data to array of hex colors with transparency
-      const hexColorsWithAlpha = [];
-      for (let i = 0; i < imageData.length; i += 4) {
-        const r = imageData[i];
-        const g = imageData[i + 1];
-        const b = imageData[i + 2];
-        const a = imageData[i + 3] / 255; // Normalize alpha value to 0-1 range
-        const hexColor = "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
-        hexColorsWithAlpha.push(hexColor + Math.round(a * 255).toString(16).padStart(2, "0"));
-      }
-
-      // Display the JSON array in the text area
-      const jsonOutput = document.getElementById("import-export-text");
-      jsonOutput.value = JSON.stringify(hexColorsWithAlpha);
-    };
-  };
-  reader.readAsDataURL(file);
 });
 
 const colorDisplay = document.getElementById("colorDisplay");
