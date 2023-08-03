@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let isPickColor = false;
   let currentColor = "#000000";
   let colorHistory = ['#000000'];
+  let canvasHistory = [];
+  let undoHistory = [];
   let pixelsData = [];
 
   // Create the pixel canvas
@@ -45,6 +47,12 @@ document.addEventListener("DOMContentLoaded", function () {
   // Handle mouse up event
   function handleMouseUp() {
     isMouseDown = false;
+
+    const importExportText = document.getElementById("import-export-text");
+    canvasHistory.push(importExportText.value);
+
+    exportCanvas();
+    undoHistory = [];
   }
 
   // Clear the pixel canvas
@@ -59,16 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Add click event for the clear button
   const clearButton = document.getElementById("clear-button");
   clearButton.addEventListener("click", clearCanvas);
-
-  // Get the value of the color picker and update the current selected pen color and color history
-  // const colorPicker = document.getElementById("color-picker");
-  // colorPicker.addEventListener("input", function () {
-  //   const newColor = colorPicker.value;
-  //   if (newColor !== currentColor) {
-  //     currentColor = newColor;
-  //     updateColorHistory(newColor);
-  //   }
-  // });
 
   const colorDisplay = document.getElementById("colorDisplay");
   const setColor = document.getElementById("setColor");
@@ -148,9 +146,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Add click event for the export button
-  const exportButton = document.getElementById("export-button");
-  exportButton.addEventListener("click", exportCanvas);
+  function undoCanvas() {
+    if (canvasHistory.length > 0) {
+      const importExportText = document.getElementById("import-export-text");
+      undoHistory.push(importExportText.value);
+      importExportText.value = canvasHistory.pop();
+  
+      importCanvas();
+    }
+  }
+
+  function redoCanvas() {
+    if (undoHistory.length > 0) {
+      const importExportText = document.getElementById("import-export-text");
+      canvasHistory.push(importExportText.value);
+      importExportText.value = undoHistory.pop();
+
+      importCanvas();
+    }
+  }
+
+  // Add click event for the undo button
+  const undoButton = document.getElementById("undo-button");
+  undoButton.addEventListener("click", undoCanvas);
+
+  const redoButton = document.getElementById("redo-button");
+  redoButton.addEventListener("click", redoCanvas);
 
   // Add click event for the import button
   const importButton = document.getElementById("import-button");
@@ -235,6 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   createCanvas();
   displayColorHistory();
+  exportCanvas();
 });
 
 document.getElementById("uploadInput").addEventListener("change", function (event) {
@@ -302,12 +324,11 @@ function updateColorDisplay() {
   const hex = rgbToHex(red, green, blue);
 
   colorDisplay.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-  hexInput.value = hex;
+  hexInput.value = hex.toString(16);
 }
 
-// Function to convert RGB to HEX
 function rgbToHex(r, g, b) {
-  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
 }
 
 // Function to update RGB sliders and color display based on HEX input
@@ -441,7 +462,25 @@ function rgbToHsv(r, g, b) {
 redRange.addEventListener("input", updateColorFromRgb);
 greenRange.addEventListener("input", updateColorFromRgb);
 blueRange.addEventListener("input", updateColorFromRgb);
-hexInput.addEventListener("input", updateColorFromHex);
+
+// Function to handle HEX input change
+function handleHexInputChange(event) {
+  if (event.key === "Enter") {
+    const hex = hexInput.value;
+    const rgb = hexToRgb(hex);
+
+    if (rgb) {
+      redRange.value = rgb.r;
+      greenRange.value = rgb.g;
+      blueRange.value = rgb.b;
+      updateColorDisplay();
+    }
+  }
+}
+
+// Event listener for HEX input change
+hexInput.addEventListener("keydown", handleHexInputChange);
+
 
 // Event listeners for HSV sliders
 hueRange.addEventListener("input", updateColorFromHsv);
