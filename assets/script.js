@@ -54,8 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Handle mouse down event
-  function handleMouseDown() {
+  function handleMouseDown(event) {
     isMouseDown = true;
+    const pixel = event.target;
+    if (isEraserMode) {
+      pixel.style.backgroundColor = "transparent";
+      pixel.dataset.color = "transparent";
+    } else {
+      pixel.style.backgroundColor = currentColor;
+      pixel.dataset.color = currentColor; // Update the color attribute of the pixel
+    }
   }
 
   // Handle mouse up event
