@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
       pixel.style.backgroundColor = currentColor;
       pixel.dataset.color = currentColor; // Update the color attribute of the pixel
     }
+    event.preventDefault();
   }
 
   // Handle mouse down event
