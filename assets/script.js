@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function drawPixelTouch(event) {
     if (isEraserMode) {
-      // 获取所有触摸点的信息
       const touches = event.touches;
       for (let i = 0; i < touches.length; i++) {
         const touch = touches[i];
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     } else {
-      // 获取所有触摸点的信息
       const touches = event.touches;
       for (let i = 0; i < touches.length; i++) {
         const touch = touches[i];
