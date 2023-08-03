@@ -42,15 +42,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function drawPixelTouch(event) {
-    const pixel = event.target;
     if (isEraserMode) {
-      pixel.style.backgroundColor = "transparent";
-      pixel.dataset.color = "transparent";
+      // 获取所有触摸点的信息
+      const touches = event.touches;
+      for (let i = 0; i < touches.length; i++) {
+        const touch = touches[i];
+        const pixel = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (pixel && pixel.classList.contains("pixel")) {
+          pixel.style.backgroundColor = "transparent";
+        }
+      }
     } else {
-      pixel.style.backgroundColor = currentColor;
-      pixel.dataset.color = currentColor; // Update the color attribute of the pixel
+      // 获取所有触摸点的信息
+      const touches = event.touches;
+      for (let i = 0; i < touches.length; i++) {
+        const touch = touches[i];
+        const pixel = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (pixel && pixel.classList.contains("pixel")) {
+          pixel.style.backgroundColor = currentColor;
+          pixel.dataset.color = currentColor;
+        }
+      }
     }
-    event.preventDefault();
   }
 
   // Handle mouse down event
