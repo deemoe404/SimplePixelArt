@@ -20,6 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
         pixel.addEventListener("mousedown", handleMouseDown);
         pixel.addEventListener("mouseup", handleMouseUp);
         pixel.addEventListener("click", pickColorFromPixel); // Add color picking functionality
+        
+        pixel.addEventListener("touchmove", drawPixel);
+        pixel.addEventListener("touchstart", handleMouseDown);
+        pixel.addEventListener("touchend", handleMouseUp);
         canvas.appendChild(pixel);
       }
     }
