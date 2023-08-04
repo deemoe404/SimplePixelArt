@@ -26,8 +26,8 @@ body {
 }
 
 #drawerMenu {
-  background-color: #fff;
-  color: #333;
+  background-color: #FFFFFF;
+  color: #484848;
   height: 100%;
   width: 350px;
   position: fixed;
@@ -92,6 +92,7 @@ body {
   overflow: hidden;
   height: 100vh;
   justify-content: center;
+  background-color: #EAE9EA;
 }
 
 @media screen and (max-width: 767px) {
@@ -282,7 +283,7 @@ button#import-button:hover {
 }
 
 button#darkenBtn {
-  background-color: #3498db;
+  background-color: #1D8BFF;
 }
 
 button#darkenBtn:hover {
@@ -290,7 +291,7 @@ button#darkenBtn:hover {
 }
 
 button#lightenBtn {
-  background-color: #3498db;
+  background-color: #1D8BFF;
 }
 
 button#lightenBtn:hover {
