@@ -1,107 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Pixel Art</title>
   <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
 <body>
-  <div class="container">
-    <div class="panel" id="controlPanel">
-      <h1>Simple Pixel Art</h1>
-      <div class="container">
-        <div class="panel" id="controlPanel">
-          <div id="colorDisplay"></div>
-          <div class="color-history" id="color-history">
-            <!-- Color history will be displayed here -->
-          </div>
-          <label for="hexInput">Hex:</label>
-          <input type="text" id="hexInput" placeholder="Hex">
-          <br>
-          <button id="darkenBtn">Darken</button>
-          <button id="lightenBtn">Lighten</button>
-          <button id="setColor">Set</button>
-        </div>
-        <div class="panel" id="contentPanel">
-          <!-- Predefined colors buttons -->
-          <div class="colorGrid">
-            <div class="presetColor" style="background-color: #ff0000" data-color="#ff0000"></div>
-            <div class="presetColor" style="background-color: #00ff00" data-color="#00ff00"></div>
-            <div class="presetColor" style="background-color: #0000ff" data-color="#0000ff"></div>
-            <div class="presetColor" style="background-color: #ffff00" data-color="#ffff00"></div>
-            <div class="presetColor" style="background-color: #ff00ff" data-color="#ff00ff"></div>
-            <div class="presetColor" style="background-color: #00ffff" data-color="#00ffff"></div>
-            <div class="presetColor" style="background-color: #ff8000" data-color="#ff8000"></div>
-            <div class="presetColor" style="background-color: #8000ff" data-color="#8000ff"></div>
-            <div class="presetColor" style="background-color: #0080ff" data-color="#0080ff"></div>
-            <div class="presetColor" style="background-color: #ff0080" data-color="#ff0080"></div>
-            <div class="presetColor" style="background-color: #80ff00" data-color="#80ff00"></div>
-            <div class="presetColor" style="background-color: #ff80c0" data-color="#ff80c0"></div>
-            <div class="presetColor" style="background-color: #8040ff" data-color="#8040ff"></div>
-            <div class="presetColor" style="background-color: #00ff80" data-color="#00ff80"></div>
-            <div class="presetColor" style="background-color: #ff40ff" data-color="#ff40ff"></div>
-            <div class="presetColor" style="background-color: #ffbf80" data-color="#ffbf80"></div>
-          </div>
+  <div id="hamburger">&#9776;</div>
+  
+
+  <!-- Menu -->
+  <div id="drawerMenu">
+    <div id="closeBtn" onclick="closeDrawerMenu()">&times;</div>
+    <h1>Simple Pixel Art</h1>
+
+    <div class="color-window">
+      <!-- Predefined colors buttons -->
+      <div style="margin: 5px;">
+        <legend>Preset</legend>
+        <div class="colorGrid">
+          <div class="presetColor" style="background-color: #ff0000" data-color="#ff0000"></div>
+          <div class="presetColor" style="background-color: #00ff00" data-color="#00ff00"></div>
+          <div class="presetColor" style="background-color: #0000ff" data-color="#0000ff"></div>
+          <div class="presetColor" style="background-color: #ffff00" data-color="#ffff00"></div>
+          <div class="presetColor" style="background-color: #ff00ff" data-color="#ff00ff"></div>
+          <div class="presetColor" style="background-color: #00ffff" data-color="#00ffff"></div>
+          <div class="presetColor" style="background-color: #ff8000" data-color="#ff8000"></div>
+          <div class="presetColor" style="background-color: #8000ff" data-color="#8000ff"></div>
+          <div class="presetColor" style="background-color: #0080ff" data-color="#0080ff"></div>
+          <div class="presetColor" style="background-color: #ff0080" data-color="#ff0080"></div>
+          <div class="presetColor" style="background-color: #80ff00" data-color="#80ff00"></div>
+          <div class="presetColor" style="background-color: #ff80c0" data-color="#ff80c0"></div>
+          <div class="presetColor" style="background-color: #8040ff" data-color="#8040ff"></div>
+          <div class="presetColor" style="background-color: #00ff80" data-color="#00ff80"></div>
+          <div class="presetColor" style="background-color: #ff40ff" data-color="#ff40ff"></div>
+          <div class="presetColor" style="background-color: #ffbf80" data-color="#ffbf80"></div>
         </div>
       </div>
 
-      <div class="container">
-        <div class="panel" id="controlPanel">
-          <!-- RGB Sliders -->
-          <label for="redRange">R:</label>
-          <input type="range" id="redRange" min="0" max="255" value="0">
-          <br>
-          <label for="greenRange">G:</label>
-          <input type="range" id="greenRange" min="0" max="255" value="0">
-          <br>
-          <label for="blueRange">B:</label>
-          <input type="range" id="blueRange" min="0" max="255" value="0">
-          <br>
-        </div>
-        <div class="panel" id="contentPanel">
-          <!-- HSV Sliders -->
-          <label for="hueRange">H:</label>
-          <input type="range" id="hueRange" min="0" max="360" value="0">
-          <br>
-          <label for="saturationRange">S:</label>
-          <input type="range" id="saturationRange" min="0" max="100" value="0">
-          <br>
-          <label for="valueRange">V:</label>
-          <input type="range" id="valueRange" min="0" max="100" value="0">
-          <br>
-        </div>
+      <!-- Color Preview -->
+      <div style="margin: 5px;">
+        <legend>Color Preview</legend>
+        <div id="colorDisplay"></div>
+        <label for="hexInput">Hex:</label>
+        <input type="text" id="hexInput" placeholder="Hex">
+        <br>
+        <button id="darkenBtn">&#x263E</button>
+        <button id="lightenBtn">&#x263C</button>
+        <button id="setColor">Set</button>
       </div>
-
-      <div class="control-buttons">
-        <button id="undo-button">Undo</button>
-        <button id="redo-button">Redo</button>
-
-        <button id="eraser-button">Eraser</button>
-        <button id="clear-button">Clear</button>
-        <button id="import-button">Import</button>
-        <button id="export-png-button">Export</button>
-
-        <label for="uploadInput" id="uploadLabel">Load</label>
-        <input type="file" id="uploadInput" accept="image/*">
-      </div>
-
-      <textarea id="import-export-text" rows="5" cols="30" placeholder="Enter imported JSON text here"></textarea>
     </div>
-    <div class="panel" id="contentPanel">
-      <div class="canvas-container">
-        <div class="canvas" id="pixel-canvas">
-          <!-- Pixel art will be displayed here -->
-        </div>
+
+    <div class="container">
+      <div class="panel" id="controlPanel">
+        <!-- RGB Sliders -->
+        <label for="redRange">R:</label>
+        <input type="range" id="redRange" min="0" max="255" value="0">
+        <br>
+        <label for="greenRange">G:</label>
+        <input type="range" id="greenRange" min="0" max="255" value="0">
+        <br>
+        <label for="blueRange">B:</label>
+        <input type="range" id="blueRange" min="0" max="255" value="0">
+        <br>
       </div>
+      <div class="panel" id="contentPanel">
+        <!-- HSV Sliders -->
+        <label for="hueRange">H:</label>
+        <input type="range" id="hueRange" min="0" max="360" value="0">
+        <br>
+        <label for="saturationRange">S:</label>
+        <input type="range" id="saturationRange" min="0" max="100" value="0">
+        <br>
+        <label for="valueRange">V:</label>
+        <input type="range" id="valueRange" min="0" max="100" value="0">
+        <br>
+      </div>
+    </div>
+
+    <hr>
+
+    <p>Recent Color</p>
+    <div class="color-history" id="color-history">
+      <!-- Color history will be displayed here -->
+    </div>
+
+    <hr>
+
+    <div class="control-buttons">
+      <button id="undo-button">&#x21A9</button>
+      <button id="redo-button">&#x21AA</button>
+
+      <button id="eraser-button">Eraser</button>
+      <button id="clear-button">Clear</button>
+      <button id="import-button">Import</button>
+      <button id="export-png-button">Export</button>
+
+      <label for="uploadInput" id="uploadLabel">Load</label>
+      <input type="file" id="uploadInput" accept="image/*">
+    </div>
+
+    <textarea id="import-export-text" rows="5" cols="30" placeholder="Enter imported JSON text here"></textarea>
+  </div>
+
+  <!-- Content -->
+  <div id="content">
+    <div class="canvas" id="pixel-canvas">
+      <!-- Pixel art will be displayed here -->
     </div>
   </div>
 
   <script src="assets/script.js"></script>
-
-  <script>
-
-  </script>
 </body>
 
 </html>

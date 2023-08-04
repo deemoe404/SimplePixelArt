@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update the color history
   function updateColorHistory(color) {
     colorHistory.unshift(color);
-    colorHistory = colorHistory.slice(0, 8);
+    colorHistory = colorHistory.slice(0, 9);
     displayColorHistory();
   }
 
@@ -569,3 +569,20 @@ presetColorButtons.forEach((button) => {
 
 // Initialize color display
 updateColorDisplay();
+
+const hamburger = document.getElementById('hamburger');
+const drawerMenu = document.getElementById('drawerMenu');
+
+hamburger.addEventListener('click', function () {
+  drawerMenu.classList.add('open');
+});
+
+function closeDrawerMenu() {
+  drawerMenu.classList.remove('open');
+}
+
+window.addEventListener('click', function (event) {
+  if (!drawerMenu.contains(event.target) && !hamburger.contains(event.target)) {
+    closeDrawerMenu();
+  }
+});

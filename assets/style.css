@@ -1,12 +1,110 @@
 body {
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 20px;
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   margin-bottom: 5px;
+}
+
+.color-window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 80px;
+}
+
+#drawerMenu {
+  background-color: #333;
+  color: #fff;
+  height: 100%;
+  width: 350px;
+  position: fixed;
+  top: 0;
+  left: -350px;
+  transition: left 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+#drawerMenu.open {
+  left: 0;
+}
+
+#drawerMenu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px;
+}
+
+#drawerMenu ul li {
+  margin-bottom: 10px;
+}
+
+#drawerMenu ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 48px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+#hamburger:hover {
+  opacity: 0.7;
+}
+
+/* Close button */
+#closeBtn {
+  position: relative;
+  font-size: 48px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#drawerMenu.open #closeBtn {
+  opacity: 1;
+}
+
+/* Style for page content */
+#content {
+  padding: 20px;
+  padding-top: 60px;
+}
+
+@media screen and (max-width: 767px) {
+  #drawerMenu.open {
+    width: 100%;
+  }
+
+  #content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #hamburger {
+    display: none;
+  }
+
+  #drawerMenu {
+    left: 0;
+  }
+
+  #content {
+    margin-left: 350px;
+  }
 }
 
 /* Styles for desktop devices */
@@ -23,7 +121,7 @@ h1 {
   }
 
   .control-buttons {
-    display: flex;
+    display: wrap;
     justify-content: center;
     margin-bottom: 20px;
   }
@@ -37,8 +135,7 @@ h1 {
 /* Styles for mobile devices */
 @media (max-width: 767px) {
   .canvas {
-    width: 90vw;
-    height: 90vw;
+    width: 100%;
   }
 
   .canvas-container {
@@ -95,7 +192,7 @@ textarea {
 .color-history-item {
   width: 20px;
   height: 20px;
-  margin: 5px;
+  margin: 1px;
   cursor: pointer;
   border: 1px solid #ccc;
   transition: transform 0.3s;
@@ -227,9 +324,9 @@ button#export-png-button:hover {
 }
 
 #colorDisplay {
-  width: 200px;
-  height: 100px;
-  margin: 20px auto;
+  width: 100px;
+  height: 50px;
+  margin: 5px auto;
   border: 2px solid #000;
 }
 
@@ -244,18 +341,18 @@ input[type="text"] {
 }
 
 .presetColor {
-  width: 40px;
-  height: 40px;
-  margin: 5px;
+  width: 35px;
+  height: 35px;
+  margin: 0px;
   border: 1px solid #000;
   cursor: pointer;
 }
 
 .colorGrid {
   display: grid;
-  grid-template-columns: repeat(4, 40px);
-  gap: 5px;
-  margin: 20px auto;
+  grid-template-columns: repeat(4, 35px);
+  gap: 0px;
+  margin: 0px;
 }
 
 .container {
@@ -269,7 +366,7 @@ input[type="text"] {
   /* Adjust the minimum width as needed */
   box-sizing: border-box;
   border: 0px solid #ccc;
-  padding: 20px;
+  padding: 5px;
 }
 
 @media (max-width: 600px) {
