@@ -121,8 +121,8 @@ body {
 /* Styles for desktop devices */
 @media (min-width: 768px) {
   .canvas {
-    width: 50vw;
-    height: 50vw;
+    width: 80vh;
+    height: 80vh;
   }
 
   .canvas-container {
