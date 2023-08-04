@@ -16,17 +16,13 @@ body {
   -webkit-user-drag: none;
 }
 
-h1 {
-  margin-bottom: 5px;
-}
-
 .color-window {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-top: 80px;
+  margin-top: 0px;
 }
 
 #drawerMenu {
@@ -39,6 +35,7 @@ h1 {
   left: -350px;
   transition: left 0.3s ease-in-out;
   overflow-y: auto;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
 }
 
 #drawerMenu.open {
@@ -66,6 +63,8 @@ h1 {
   left: 20px;
   font-size: 48px;
   cursor: pointer;
+  width: 50px;
+  height: 50px;
   transition: opacity 0.3s ease;
 }
 
@@ -75,13 +74,12 @@ h1 {
 
 /* Close button */
 #closeBtn {
-  position: relative;
+  width: 50px;
+  height: 50px;
   font-size: 48px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.3s ease;
-  margin-top: 20px;
-  margin-left: 20px;
 }
 
 #drawerMenu.open #closeBtn {
@@ -90,15 +88,16 @@ h1 {
 
 /* Style for page content */
 #content {
-  padding: 20px;
-  padding-top: 60px;
+  display: flex;
   overflow: hidden;
+  height: 100vh;
+  justify-content: center;
 }
 
 @media screen and (max-width: 767px) {
-  #drawerMenu.open {
+  /* #drawerMenu.open {
     width: 100%;
-  }
+  } */
 
   #content {
     margin-left: 0;
@@ -147,7 +146,8 @@ h1 {
 /* Styles for mobile devices */
 @media (max-width: 767px) {
   .canvas {
-    width: 100%;
+    width: 80vw;
+    height: 80vw;
   }
 
   .canvas-container {
@@ -177,6 +177,7 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 5px;
   aspect-ratio: 1;
+  margin: auto;
 }
 
 .pixel {
