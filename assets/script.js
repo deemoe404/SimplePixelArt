@@ -37,6 +37,11 @@ document.addEventListener("DOMContentLoaded", function () {
         pixel.style.backgroundColor = "transparent";
         pixel.dataset.color = "transparent";
       } else {
+        const newColor = colorDisplay.style.backgroundColor;
+        if (newColor !== currentColor) {
+          currentColor = newColor;
+          updateColorHistory(newColor);
+        }
         pixel.style.backgroundColor = currentColor;
         pixel.dataset.color = currentColor; // Update the color attribute of the pixel
       }
@@ -54,6 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
     } else {
+      const newColor = colorDisplay.style.backgroundColor;
+      if (newColor !== currentColor) {
+        currentColor = newColor;
+        updateColorHistory(newColor);
+      }
       const touches = event.touches;
       for (let i = 0; i < touches.length; i++) {
         const touch = touches[i];
@@ -74,6 +84,11 @@ document.addEventListener("DOMContentLoaded", function () {
       pixel.style.backgroundColor = "transparent";
       pixel.dataset.color = "transparent";
     } else {
+      const newColor = colorDisplay.style.backgroundColor;
+      if (newColor !== currentColor) {
+        currentColor = newColor;
+        updateColorHistory(newColor);
+      }
       pixel.style.backgroundColor = currentColor;
       pixel.dataset.color = currentColor; // Update the color attribute of the pixel
     }
@@ -104,16 +119,6 @@ document.addEventListener("DOMContentLoaded", function () {
   clearButton.addEventListener("click", clearCanvas);
 
   const colorDisplay = document.getElementById("colorDisplay");
-  const setColor = document.getElementById("setColor");
-  // Function to set color
-  function setUpColor() {
-    const newColor = colorDisplay.style.backgroundColor;
-    if (newColor !== currentColor) {
-      currentColor = newColor;
-      updateColorHistory(newColor);
-    }
-  }
-  setColor.addEventListener("click", setUpColor);
 
   // Update the color history
   function updateColorHistory(color) {
