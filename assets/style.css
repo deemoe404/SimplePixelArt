@@ -330,12 +330,12 @@ button#export-png-button:hover {
 }
 
 #colorDisplay {
-  width: 100px;
+  width: 80px;
   height: 32px;
   margin: auto;
   border: 1px solid #5c5c5ca7;
   border-radius: 2px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  box-shadow:inset 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
 input[type="range"] {
@@ -355,7 +355,7 @@ input[type="text"] {
   cursor: pointer;
   border-radius: 50%;
   margin: auto;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  box-shadow:inset 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
 .presetColor:hover {

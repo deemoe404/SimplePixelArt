@@ -79,25 +79,25 @@
         <!-- Color Preview -->
         <div style="margin: 5px;">
           <div id="colorDisplay"></div>
-          <input style="border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); border: 1px solid #ccc;" type="text" id="hexInput"
+          <input style="border-radius: 5px; box-shadow:inset 0 2px 5px rgba(0, 0, 0, 0.1); border: 1px solid #ccc;" type="text" id="hexInput"
             placeholder="Hex">
         </div>
       </div>
   
       <!-- RGB Sliders -->
       <div style="display: flex;">
-        <div style="margin-left: 15px;">
+        <div style="margin-left: 20px;">
           <div style="display: flex; justify-items: center; align-items: center;">
             <label for="redRange">R  </label>
-            <input type="range" id="redRange" min="0" max="255" value="0" style="width: 220px;">
+            <input type="range" id="redRange" min="0" max="255" value="0" style="width: 140px;">
           </div>
           <div style="display: flex; justify-items: center; align-items: center;">
             <label for="greenRange">G  </label>
-            <input type="range" id="greenRange" min="0" max="255" value="0" style="width: 220px;">
+            <input type="range" id="greenRange" min="0" max="255" value="0" style="width: 140px;">
           </div>
           <div style="display: flex; justify-items: center; align-items: center;">
             <label for="blueRange">B  </label>
-            <input type="range" id="blueRange" min="0" max="255" value="0" style="width: 220px;">
+            <input type="range" id="blueRange" min="0" max="255" value="0" style="width: 140px;">
           </div>
         </div>
         <button id="lightenBtn" style="margin: auto; width: 48px; height: 48px;">V+</button>
@@ -105,18 +105,18 @@
   
       <!-- HSV Sliders -->
       <div style="display: flex; margin-top: 5px;">
-        <div style="margin-left: 15px;">
+        <div style="margin-left: 20px;">
           <div style="display: flex; justify-items: center; align-items: center;">
             <label for="hueRange">H  </label>
-            <input type="range" id="hueRange" min="0" max="360" value="0" style="width: 220px;">
+            <input type="range" id="hueRange" min="0" max="360" value="0" style="width: 140px;">
           </div>
           <div style="display: flex; justify-items: center; align-items: center;">
             <label for="saturationRange">S  </label>
-            <input type="range" id="saturationRange" min="0" max="100" value="0" style="width: 220px;">
+            <input type="range" id="saturationRange" min="0" max="100" value="0" style="width: 140px;">
           </div>
           <div style="display: flex; justify-items: center; align-items: center;">
             <label for="valueRange">V  </label>
-            <input type="range" id="valueRange" min="0" max="100" value="0" style="width: 220px;">
+            <input type="range" id="valueRange" min="0" max="100" value="0" style="width: 140px;">
           </div>
         </div>
         <button id="darkenBtn" style="margin: auto; width: 48px; height: 48px;">V-</button>
