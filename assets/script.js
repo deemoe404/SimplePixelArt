@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let isEraserMode = false;
   let isPickColor = false;
   let currentColor = "#000000";
-  let colorHistory = ['#000000'];
+  let colorHistory = ['rgb(0,0,0)'];
   let canvasHistory = [];
   let undoHistory = [];
   let pixelsData = [];
@@ -122,9 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Update the color history
   function updateColorHistory(color) {
-    colorHistory.unshift(color);
-    colorHistory = colorHistory.slice(0, 9);
-    displayColorHistory();
+    if (colorHistory.indexOf(color) == -1) {
+      colorHistory.unshift(color);
+      colorHistory = colorHistory.slice(0, 12);
+      displayColorHistory();
+    }
   }
 
   // Display the color history
@@ -137,8 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
       colorItem.classList.add("color-history-item");
       colorItem.style.backgroundColor = color;
       colorItem.addEventListener("click", () => {
-        currentColor = color;
-        colorPicker.value = color;
+        var rgb = color.match(/\d+/g);
+        redRange.value = rgb[0];
+        greenRange.value = rgb[1];
+        blueRange.value = rgb[2];
+        updateColorDisplay();
       });
       colorHistoryDiv.appendChild(colorItem);
     });

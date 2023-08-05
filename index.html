@@ -21,8 +21,7 @@
 
     <br>
 
-    <div style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
-      <p>Color Mixer</p>
+    <div class="card">
       <div class="color-window">
         <!-- Color Preset -->
         <div class="colorGrid">
@@ -75,71 +74,66 @@
             <div class="presetColor" style="background-color: #295EF4" data-color="#295EF4"></div>
           </div>
         </div>
-  
-        <!-- Color Preview -->
-        <div style="margin: 5px;">
-          <div id="colorDisplay"></div>
-          <input style="border-radius: 5px; box-shadow:inset 0 2px 5px rgba(0, 0, 0, 0.1); border: 1px solid #ccc;" type="text" id="hexInput"
-            placeholder="Hex">
-        </div>
-      </div>
-  
-      <!-- RGB Sliders -->
-      <div style="display: flex;">
-        <div style="margin-left: 20px;">
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="redRange">R  </label>
-            <input type="range" id="redRange" min="0" max="255" value="0" style="width: 140px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="greenRange">G  </label>
-            <input type="range" id="greenRange" min="0" max="255" value="0" style="width: 140px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="blueRange">B  </label>
-            <input type="range" id="blueRange" min="0" max="255" value="0" style="width: 140px;">
-          </div>
-        </div>
-        <button id="lightenBtn" style="margin: auto; width: 48px; height: 48px;">V+</button>
-      </div>
-  
-      <!-- HSV Sliders -->
-      <div style="display: flex; margin-top: 5px;">
-        <div style="margin-left: 20px;">
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="hueRange">H  </label>
-            <input type="range" id="hueRange" min="0" max="360" value="0" style="width: 140px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="saturationRange">S  </label>
-            <input type="range" id="saturationRange" min="0" max="100" value="0" style="width: 140px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="valueRange">V  </label>
-            <input type="range" id="valueRange" min="0" max="100" value="0" style="width: 140px;">
-          </div>
-        </div>
-        <button id="darkenBtn" style="margin: auto; width: 48px; height: 48px;">V-</button>
-      </div>
-    </div>
 
-    <div style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
-      <p>Recent Color</p>
+        <!-- Color Preview -->
+        <div style="margin-left: 2px;">
+          <div id="colorDisplay"></div>
+          <input type="text" id="hexInput" placeholder="Hex">
+        </div>
+
+        <div class="brightness-window">
+          <button id="lightenBtn" class="brightness-control">V+</button>
+          <button id="darkenBtn" class="brightness-control">V-</button>
+        </div>
+      </div>
+
+      <div class="color-window" style="margin-top: 8px;">
+        <div style="margin-right: 8px;">
+          <div style="display: flex; justify-items: center; align-items: center;">
+            <label for="redRange">R</label>
+            <input type="range" id="redRange" min="0" max="255" value="0" style="width: 100px;">
+          </div>
+          <div style="display: flex; justify-items: center; align-items: center;">
+            <label for="greenRange">G</label>
+            <input type="range" id="greenRange" min="0" max="255" value="0" style="width: 100px;">
+          </div>
+          <div style="display: flex; justify-items: center; align-items: center;">
+            <label for="blueRange">B</label>
+            <input type="range" id="blueRange" min="0" max="255" value="0" style="width: 100px;">
+          </div>
+        </div>
+
+        <div style="margin-left: 8px;">
+          <div style="display: flex; justify-items: center; align-items: center;">
+            <label for="hueRange">H</label>
+            <input type="range" id="hueRange" min="0" max="360" value="0" style="width: 100px;">
+          </div>
+          <div style="display: flex; justify-items: center; align-items: center;">
+            <label for="saturationRange">S</label>
+            <input type="range" id="saturationRange" min="0" max="100" value="0" style="width: 100px;">
+          </div>
+          <div style="display: flex; justify-items: center; align-items: center;">
+            <label for="valueRange">V</label>
+            <input type="range" id="valueRange" min="0" max="100" value="0" style="width: 100px;">
+          </div>
+        </div>
+      </div>
+
       <div class="color-history" id="color-history">
         <!-- Color history will be displayed here -->
       </div>
     </div>
 
-    <div style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
+    <div
+      style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
       <p>Tools</p>
       <div class="control-buttons">
-
-  
         <button id="eraser-button">Eraser</button>
       </div>
     </div>
 
-    <div style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
+    <div
+      style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
       <p>Cavans Control</p>
       <div class="control-buttons">
         <button id="undo-button">&#x21A9</button>
@@ -150,7 +144,7 @@
         <label for="uploadInput" id="uploadLabel">Load</label>
         <input type="file" id="uploadInput" accept="image/*">
       </div>
-  
+
       <textarea id="import-export-text" rows="5" cols="30" placeholder="Enter imported JSON text here"></textarea>
     </div>
 
