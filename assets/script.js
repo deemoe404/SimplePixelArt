@@ -103,6 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     exportCanvas();
     undoHistory = [];
+
+    alert("up");
   }
 
   // Clear the pixel canvas
