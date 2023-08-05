@@ -19,6 +19,13 @@
       <h1 style="margin: auto;">Simple Pixel Art</h1>
     </div>
 
+    <div class="capsule-tabs" id="capsuleTabs">
+      <div class="tab-item active" data-tab-index="0">Pen</div>
+      <div class="tab-item" data-tab-index="1">Eraser</div>
+      <div class="tab-item" data-tab-index="2">Fill</div>
+      <div class="tab-item" data-tab-index="3">Slurp</div>
+    </div>
+
     <br>
 
     <div class="card">
@@ -124,13 +131,6 @@
       </div>
     </div>
 
-    <div
-      style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
-      <p>Tools</p>
-      <div class="control-buttons">
-        <button id="eraser-button">Eraser</button>
-      </div>
-    </div>
 
     <div
       style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
@@ -139,8 +139,7 @@
         <button id="undo-button">&#x21A9</button>
         <button id="redo-button">&#x21AA</button>
         <button id="clear-button">Clear</button>
-        <button id="import-button">Import</button>
-        <button id="export-png-button">Export</button>
+        <button id="export-png-button">Save</button>
         <label for="uploadInput" id="uploadLabel">Load</label>
         <input type="file" id="uploadInput" accept="image/*">
       </div>

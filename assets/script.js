@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let canvasHistory = [];
   let undoHistory = [];
   let pixelsData = [];
+  let tabIndex = 0;
 
   // Create the pixel canvas
   function createCanvas() {
@@ -78,19 +79,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Handle mouse down event
   function handleMouseDown(event) {
-    isMouseDown = true;
-    const pixel = event.target;
-    if (isEraserMode) {
-      pixel.style.backgroundColor = "transparent";
-      pixel.dataset.color = "transparent";
-    } else {
-      const newColor = colorDisplay.style.backgroundColor;
-      if (newColor !== currentColor) {
-        currentColor = newColor;
-        updateColorHistory(newColor);
+    if (isPickColor == false) {
+      isMouseDown = true;
+      const pixel = event.target;
+      if (isEraserMode) {
+        pixel.style.backgroundColor = "transparent";
+        pixel.dataset.color = "transparent";
+      } else {
+        const newColor = colorDisplay.style.backgroundColor;
+        if (newColor !== currentColor) {
+          currentColor = newColor;
+          updateColorHistory(newColor);
+        }
+        pixel.style.backgroundColor = currentColor;
+        pixel.dataset.color = currentColor; // Update the color attribute of the pixel
       }
-      pixel.style.backgroundColor = currentColor;
-      pixel.dataset.color = currentColor; // Update the color attribute of the pixel
     }
   }
 
@@ -220,11 +223,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add click event for the import button
   const importButton = document.getElementById("import-button");
-  importButton.addEventListener("click", importCanvas);
 
   // Add click event for the eraser button
   const eraserButton = document.getElementById("eraser-button");
-  eraserButton.addEventListener("click", toggleEraserMode);
+
 
   // Toggle the eraser mode
   function toggleEraserMode() {
@@ -250,7 +252,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const pickedColor = getColorFromPixel(pixel);
       if (pickedColor !== "transparent") {
         currentColor = pickedColor;
-        colorPicker.value = pickedColor;
+        var rgb = pickedColor.match(/\d+/g);
+        redRange.value = rgb[0];
+        greenRange.value = rgb[1];
+        blueRange.value = rgb[2];
+        updateColorDisplay();
       }
     } else {
       const pixel = event.target;
@@ -344,6 +350,39 @@ document.addEventListener("DOMContentLoaded", function () {
   createCanvas();
   displayColorHistory();
   exportCanvas();
+
+  function switchTab(event) {
+    const tabButton = event.target;
+    tabIndex = parseInt(tabButton.getAttribute('data-tab-index'));
+
+    if (tabIndex == 0) {
+      isEraserMode = false;
+      isPickColor = false;
+    }
+    if (tabIndex == 1) {
+      isEraserMode = true;
+      isPickColor = false;
+    }
+    if (tabIndex == 3) {
+      isEraserMode = false;
+      isPickColor = true;
+    }
+
+    if (!isNaN(tabIndex)) {
+      const tabs = document.querySelectorAll('.tab-item');
+
+      tabs.forEach((tab, index) => {
+        if (index === tabIndex) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  const swtab = document.getElementById("capsuleTabs");
+  swtab.addEventListener("click", switchTab);
 });
 
 const colorDisplay = document.getElementById("colorDisplay");
@@ -526,7 +565,6 @@ function handleHexInputChange(event) {
 
 // Event listener for HEX input change
 hexInput.addEventListener("keydown", handleHexInputChange);
-
 
 // Event listeners for HSV sliders
 hueRange.addEventListener("input", updateColorFromHsv);

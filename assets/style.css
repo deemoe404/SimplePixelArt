@@ -19,10 +19,10 @@ body {
 .card {
   border-radius: 5px;
   margin: 10px;
-  background-color: #F3F3F3;
+  background-color: #f1f1f1;
   padding: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #aaaaaa44;
 }
 
 .presetColor {
@@ -415,4 +415,51 @@ input[type="text"] {
   .container {
     flex-direction: column;
   }
+}
+
+.capsule-tabs {
+  display: inline-block;
+  background-color: #f1f1f1;
+  padding: 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #aaaaaa44;
+  margin-top: 8px;
+}
+
+.tab-item {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-right: 8px;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+  transform: translateZ(0);
+  /* Enable hardware acceleration for smoother animation */
+}
+
+.active {
+  background-color: #007aff;
+  color: white;
+  border: 1px solid #004ea1b2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.content {
+  padding: 16px;
+  border: 1px solid #f1f1f1;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.2s, transform 0.2s;
+  transform: translateZ(0);
+  /* Enable hardware acceleration for smoother animation */
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
 }
