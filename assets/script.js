@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const pixel = document.elementFromPoint(touch.clientX, touch.clientY);
         if (pixel && pixel.classList.contains("pixel")) {
           pixel.style.backgroundColor = "transparent";
+          pixel.dataset.color = "transparent";
         }
       }
     } else {
