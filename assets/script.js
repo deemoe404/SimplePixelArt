@@ -283,11 +283,6 @@ document.addEventListener("DOMContentLoaded", function () {
     canvasCopy.width = PIXEL_SIZE * 10;
     canvasCopy.height = PIXEL_SIZE * 10;
 
-    // Get the CSS style of the pixel canvas
-    const canvasStyle = window.getComputedStyle(canvas);
-    ctx.fillStyle = canvasStyle.backgroundColor;
-    ctx.fillRect(0, 0, canvasCopy.width, canvasCopy.height);
-
     // Draw the pixel canvas on the new canvas
     const allPixels = canvas.querySelectorAll(".pixel");
     allPixels.forEach((pixel, index) => {
@@ -335,7 +330,13 @@ document.addEventListener("DOMContentLoaded", function () {
           const b = imageData[i + 2];
           const a = imageData[i + 3] / 255; // Normalize alpha value to 0-1 range
           const hexColor = "#" + ((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1);
-          hexColorsWithAlpha.push(hexColor + Math.round(a * 255).toString(16).padStart(2, "0"));
+          const temp = hexColor + Math.round(a * 255).toString(16).padStart(2, "0");
+          if (temp == "#00000000") {
+            hexColorsWithAlpha.push("transparent");
+          } else {
+            hexColorsWithAlpha.push("rgb(" + r + "," + g + "," + b + ")");
+          }
+          
         }
 
         // Display the JSON array in the text area
