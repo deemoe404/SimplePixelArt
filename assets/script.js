@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         pixel.addEventListener("touchmove", drawPixelTouch, { passive: true });
         pixel.addEventListener("touchend", handleMouseUp);
-        pixel.addEventListener("touchcancel", handleMouseUp);
         canvas.appendChild(pixel);
       }
     }
@@ -101,10 +100,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const importExportText = document.getElementById("import-export-text");
     canvasHistory.push(importExportText.value);
 
-    exportCanvas();
     undoHistory = [];
-
-    alert("up");
+    exportCanvas();
   }
 
   // Clear the pixel canvas
