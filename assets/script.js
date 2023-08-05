@@ -115,6 +115,11 @@ document.addEventListener("DOMContentLoaded", function () {
       pixel.style.backgroundColor = "transparent";
       pixel.dataset.color = "transparent"; // Reset the color attribute of the pixel
     });
+    const importExportText = document.getElementById("import-export-text");
+    canvasHistory.push(importExportText.value);
+
+    undoHistory = [];
+    exportCanvas();
   }
 
   // Add click event for the clear button
@@ -336,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function () {
           } else {
             hexColorsWithAlpha.push("rgb(" + r + "," + g + "," + b + ")");
           }
-          
+
         }
 
         // Display the JSON array in the text area
