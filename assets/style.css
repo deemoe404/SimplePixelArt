@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -26,12 +26,11 @@ body {
 }
 
 .presetColor {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border: 1px solid #6464646e;
   cursor: pointer;
-  border-radius: 50%;
-  margin: auto;
+  border-radius: 4px;
   box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -40,12 +39,11 @@ body {
 }
 
 .colorGrid {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  width: 168px;
-  height: 56px;
-  margin: 0px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  margin: 0 0 8px 0;
+  width: 144px;
 }
 
 .color-window {
@@ -58,6 +56,28 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
+}
+
+.preview {
+  margin-left: 8px;
+}
+
+.sliders {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.rgb,
+.hsv {
+  margin: 0 8px;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .brightness-control {
@@ -112,10 +132,10 @@ body {
   background-color: #FFFFFF;
   color: #484848;
   height: 100%;
-  width: 350px;
+  width: 300px;
   position: fixed;
   top: 0;
-  left: -350px;
+  left: -300px;
   transition: left 0.3s ease-in-out;
   overflow-y: auto;
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.3);
@@ -138,6 +158,18 @@ body {
 #drawerMenu ul li a {
   color: #fff;
   text-decoration: none;
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.drawer-header h1 {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 1.4em;
 }
 
 #hamburger {
@@ -198,7 +230,7 @@ body {
   }
 
   #content {
-    margin-left: 350px;
+    margin-left: 300px;
   }
 }
 
