@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Pixel Art</title>
-  <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-
 <body>
   <div id="hamburger">&#9776;</div>
 
-  <!-- Menu -->
-  <div id="drawerMenu">
-    <div
-      style="display: flex; align-items: left; flex-direction: row; margin-top: 20px; margin-left: 20px; margin-right: 20px;">
+  <aside id="drawerMenu">
+    <div class="drawer-header">
       <div id="closeBtn" onclick="closeDrawerMenu()">&times;</div>
-      <h1 style="margin: auto;">Simple Pixel Art</h1>
+      <h1>Simple Pixel Art</h1>
     </div>
 
     <div class="capsule-tabs" id="capsuleTabs">
@@ -26,139 +22,68 @@
       <div class="tab-item" data-tab-index="3">Slurp</div>
     </div>
 
-    <br>
-
     <div class="card">
       <div class="color-window">
-        <!-- Color Preset -->
         <div class="colorGrid">
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #FFFFFF" data-color="#FFFFFF"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #BFBFBE" data-color="#BFBFBE"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #000000" data-color="#000000"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #6BE4CF" data-color="#6BE4CF"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #EB539F" data-color="#EB539F"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #792CF5" data-color="#792CF5"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #EA4C3E" data-color="#EA4C3E"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #EE8C00" data-color="#EE8C00"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #F5CF46" data-color="#F5CF46"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #65C366" data-color="#65C366"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #5BC4F6" data-color="#5BC4F6"></div>
-          </div>
-          <div
-            style="height: 24px; width: 24px; margin: auto; display: flex; justify-items: center; align-items: center;">
-            <div class="presetColor" style="background-color: #295EF4" data-color="#295EF4"></div>
-          </div>
+          <div class="presetColor" style="background-color: #FFFFFF" data-color="#FFFFFF"></div>
+          <div class="presetColor" style="background-color: #BFBFBE" data-color="#BFBFBE"></div>
+          <div class="presetColor" style="background-color: #000000" data-color="#000000"></div>
+          <div class="presetColor" style="background-color: #6BE4CF" data-color="#6BE4CF"></div>
+          <div class="presetColor" style="background-color: #EB539F" data-color="#EB539F"></div>
+          <div class="presetColor" style="background-color: #792CF5" data-color="#792CF5"></div>
+          <div class="presetColor" style="background-color: #EA4C3E" data-color="#EA4C3E"></div>
+          <div class="presetColor" style="background-color: #EE8C00" data-color="#EE8C00"></div>
+          <div class="presetColor" style="background-color: #F5CF46" data-color="#F5CF46"></div>
+          <div class="presetColor" style="background-color: #65C366" data-color="#65C366"></div>
+          <div class="presetColor" style="background-color: #5BC4F6" data-color="#5BC4F6"></div>
+          <div class="presetColor" style="background-color: #295EF4" data-color="#295EF4"></div>
         </div>
-
-        <!-- Color Preview -->
-        <div style="margin-left: 2px;">
+        <div class="preview">
           <div id="colorDisplay"></div>
           <input type="text" id="hexInput" placeholder="Hex">
         </div>
-
         <div class="brightness-window">
           <button id="lightenBtn" class="brightness-control">V+</button>
           <button id="darkenBtn" class="brightness-control">V-</button>
         </div>
       </div>
 
-      <div class="color-window" style="margin-top: 8px;">
-        <div style="margin-right: 8px;">
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="redRange">R</label>
-            <input type="range" id="redRange" min="0" max="255" value="0" style="width: 100px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="greenRange">G</label>
-            <input type="range" id="greenRange" min="0" max="255" value="0" style="width: 100px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="blueRange">B</label>
-            <input type="range" id="blueRange" min="0" max="255" value="0" style="width: 100px;">
-          </div>
+      <div class="color-window sliders">
+        <div class="rgb">
+          <div class="slider"><label for="redRange">R</label><input type="range" id="redRange" min="0" max="255" value="0"></div>
+          <div class="slider"><label for="greenRange">G</label><input type="range" id="greenRange" min="0" max="255" value="0"></div>
+          <div class="slider"><label for="blueRange">B</label><input type="range" id="blueRange" min="0" max="255" value="0"></div>
         </div>
-
-        <div style="margin-left: 8px;">
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="hueRange">H</label>
-            <input type="range" id="hueRange" min="0" max="360" value="0" style="width: 100px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="saturationRange">S</label>
-            <input type="range" id="saturationRange" min="0" max="100" value="0" style="width: 100px;">
-          </div>
-          <div style="display: flex; justify-items: center; align-items: center;">
-            <label for="valueRange">V</label>
-            <input type="range" id="valueRange" min="0" max="100" value="0" style="width: 100px;">
-          </div>
+        <div class="hsv">
+          <div class="slider"><label for="hueRange">H</label><input type="range" id="hueRange" min="0" max="360" value="0"></div>
+          <div class="slider"><label for="saturationRange">S</label><input type="range" id="saturationRange" min="0" max="100" value="0"></div>
+          <div class="slider"><label for="valueRange">V</label><input type="range" id="valueRange" min="0" max="100" value="0"></div>
         </div>
       </div>
-
-      <div class="color-history" id="color-history">
-        <!-- Color history will be displayed here -->
-      </div>
+      <div class="color-history" id="color-history"></div>
     </div>
 
-
-    <div
-      style="border-radius: 5px; margin: 10px; background-color: #F3F3F3; padding-bottom: 10px; padding-top: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);">
-      <p>Cavans Control</p>
+    <div class="card">
+      <p>Canvas Control</p>
       <div class="control-buttons">
-        <button id="undo-button">&#x21A9</button>
-        <button id="redo-button">&#x21AA</button>
+        <button id="undo-button">&#x21A9;</button>
+        <button id="redo-button">&#x21AA;</button>
         <button id="clear-button">Clear</button>
         <button id="export-png-button">Save</button>
         <label for="uploadInput" id="uploadLabel">Load</label>
         <input type="file" id="uploadInput" accept="image/*">
       </div>
-
       <textarea id="import-export-text" rows="5" cols="30" placeholder="Enter imported JSON text here"></textarea>
     </div>
 
     <p>Thanks for playing my game.</p>
     <p>Follow this project on <a href="https://github.com/phyllali/SimplePixelArt">github</a>.</p>
-  </div>
+  </aside>
 
-  <!-- Content -->
-  <div id="content">
-    <div class="canvas" id="pixel-canvas">
-      <!-- Pixel art will be displayed here -->
-    </div>
-  </div>
+  <main id="content">
+    <div class="canvas" id="pixel-canvas"></div>
+  </main>
 
   <script src="assets/script.js"></script>
 </body>
-
 </html>
