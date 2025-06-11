@@ -357,6 +357,10 @@ document.addEventListener("DOMContentLoaded", function () {
   displayColorHistory();
   exportCanvas();
 
+  // Ensure drawing stops when releasing the mouse outside the canvas
+  document.addEventListener("mouseup", handleMouseUp);
+  document.addEventListener("touchend", handleMouseUp);
+
   function switchTab(event) {
     const tabButton = event.target;
     tabIndex = parseInt(tabButton.getAttribute('data-tab-index'));
